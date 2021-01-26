@@ -2,7 +2,8 @@ name = "PUDLData"
 uuid = "e89f8757-c0c2-474f-b6c2-e20a1a23c1b1"
 version = "0.1.0"
 
-[compat]
+[deps]
+DataDeps = "124859b0-ceae-595e-8997-d05f6a7a8dfe"
 julia = "1"
 
 [extras]
