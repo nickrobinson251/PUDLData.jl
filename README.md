@@ -14,7 +14,7 @@ You can install the package with the Julia package manager Pkg.jl in the REPL li
 
 ```julia
 # press `]` to enable the Pkg REPL mode
-pkg> add https://github.com/nickrobinson251/PUDLData.jl.git
+pkg> add https://github.com/nickrobinson251/PUDLData.jl
 ```
 
 To see available datasets:
