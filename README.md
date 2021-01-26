@@ -8,7 +8,7 @@ Download [PUDL](https://github.com/catalyst-cooperative/pudl/) data archived on 
 NOTE: This package has no official connection to the [PUDL
 project](https://catalyst.coop/pudl/).
 
-Also this is a prototype package, I made it as part of playing around with the PUDL datasets, and it is not registered in the [General] Julia Package registry.
+Also this is a prototype package, I made it as part of playing around with the PUDL datasets, and it is not registered in the [General](https://github.com/JuliaRegistries/General/#general) Julia Package registry.
 
 You can install the package with the Julia package manager Pkg.jl in the REPL like:
 
