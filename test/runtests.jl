@@ -2,5 +2,5 @@ using PUDLData
 using Test
 
 @testset "PUDLData.jl" begin
-    # Write your tests here.
+    @test all(startswith("pudl"), pudl_datasets())
 end
