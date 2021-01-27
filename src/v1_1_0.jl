@@ -1,6 +1,6 @@
 const DATASET_CHECKSUM_V1_1_0 = Dict(
     "pudl-eia860-eia923" => "0f6a4ebe203793a46538de6797bca3bb7c43228372b989bbff9c91bef13c5e50",
-    "pudl-eia860-eia923-epacems" => "f99575ad2b3faf8589fed4ee730f6ed723754b37dd8c8f179025cf0b8b173f4f"
+    "pudl-eia860-eia923-epacems" => "f99575ad2b3faf8589fed4ee730f6ed723754b37dd8c8f179025cf0b8b173f4f",
     "pudl-ferc1" => "7cc385cdbb6d460b64ce32bfa8c64e2d940ab2e7c16d8b92371c88279bd9d8f5",
 )
 const DATASET_DESCRIPTION_V1_1_0 = Dict(
