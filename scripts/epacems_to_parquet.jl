@@ -19,7 +19,7 @@ end
 ungzip(filepath) = transcode(GzipDecompressor, Mmap.mmap(filepath))
 
 """
-    epacems_to_parquet(years, state; compression="gzip")
+    epacems_to_parquet(years, state; compress=:zstd)
 
 Convert EPA-CEMS `.csv.gz` files for the given `years` and `states` to `.parquet` files.
 
@@ -28,9 +28,9 @@ Convert EPA-CEMS `.csv.gz` files for the given `years` and `states` to `.parquet
 - `states` two-letter abbreviations, e.g. `"AL"` or `["AL", "AZ"]`
 
 # Keywords
-- `compression`: Compression code; "uncompressed", "snappy", "zstd", or "gzip".
+- `compress=:zstd`: Compression codec; :uncompressed, :snappy, :gzip, or :zstd.
 """
-function epacems_to_parquet(year::Int, state::String; compression="gzip")
+function epacems_to_parquet(year::Int, state::String; compress=:gzip)
     @info "Converting to Parquet" year state
     filename = epacems_file(year, state)
 
@@ -49,11 +49,11 @@ function epacems_to_parquet(year::Int, state::String; compression="gzip")
     SupportedType = Union{Missing, Int32, Int64, String, Bool, Float32, Float64}
     @assert all(col -> eltype(col) <: SupportedType, eachcol(df))
 
-    write_parquet("$filename.parquet", df; compression_codec=uppercase(compression))
+    write_parquet("$filename.parquet", df; compression_codec=uppercase(string(compress)))
 end
 
 """
-    epacems_to_arrow(years, state; keywords...)
+    epacems_to_arrow(years, state; compress=:zstd, keywords...)
 
 Convert EPA-CEMS `.csv.gz` files for the given `years` and `states` to `.arrow` files.
 
@@ -62,14 +62,14 @@ Convert EPA-CEMS `.csv.gz` files for the given `years` and `states` to `.arrow` 
 - `states` two-letter abbreviations, e.g. `"AL"` or `["AL", "AZ"]`
 
 # Keywords
-- `compress=nothing`: Compression code; `nothing`, `:lz4` or `:zstd`.
-- Keywords are passed to `Arrow.write`; see `Arrow.write` for other supported keywords.
+- `compress=:zstd`: Compression codec; `nothing`, `:lz4`, or `:zstd`.
+- Other keywords are passed to `Arrow.write`; see `Arrow.write` for supported keywords.
 """
-function epacems_to_arrow(year::Int, state::String; compression="gzip")
+function epacems_to_arrow(year::Int, state::String; compress=:zstd, kwargs...)
     @info "Converting to Arrow" year state
     filename = epacems_file(year, state)
     csv_file = CSV.File(ungzip("$filename.csv.gz"))
-    Arrow.write("$filename.arrow", csv_file)
+    Arrow.write("$filename.arrow", csv_file; compress=compress, kwargs...)
 end
 
 for func in (:epacems_to_parquet, :epacems_to_arrow)
