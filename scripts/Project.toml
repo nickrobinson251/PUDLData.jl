@@ -1,0 +1,10 @@
+[deps]
+Arrow = "69666777-d1a9-59fb-9406-91d4454c9d45"
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+CodecZlib = "944b1d66-785c-5afd-91f1-9de20f533193"
+DataDeps = "124859b0-ceae-595e-8997-d05f6a7a8dfe"
+DataDepsGenerators = "a14fa8ac-7845-53f2-854f-e9bba4c623ff"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Mmap = "a63ad114-7e13-5084-954f-fe012c677804"
+PUDLData = "e89f8757-c0c2-474f-b6c2-e20a1a23c1b1"
+Parquet = "626c502c-15b0-58ad-a749-f091afb673ae"
